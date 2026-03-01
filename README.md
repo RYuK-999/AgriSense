@@ -12,6 +12,20 @@
 - **🦠 Disease Detection (YOLOv8)**: Upload an image of a leaf to instantly identify potential diseases and receive actionable treatment advice.
 - **🧑‍🌾 Farmer-Friendly Advisory**: Simple input forms designed for ease-of-use, which auto-detect soil profiles and weather by region.
 
+## 🤖 Machine Learning Models & Training
+
+AgriSense uses two distinct machine learning pipelines to provide accurate recommendations:
+
+### 1. Crop Recommendation Model
+- **Algorithm**: `RandomForestClassifier` (exported as `crop40_brain1.joblib`)
+- **Training Process**: The model was trained on an agricultural dataset containing 40 different crop classes. The features used for training included soil nutrients (Nitrogen, Phosphorous, Potassium), soil pH, and expected climate factors (Temperature, Humidity, Rainfall).
+- **Feature Engineering**: To improve prediction accuracy, three additional derived ratios were engineered during training and prediction: `N/P`, `N/K`, and `P/K`. The model calculates risk-adjusted profit using live market prices.
+
+### 2. Plant Disease Detection Model
+- **Algorithm**: `YOLOv8 Classification` (exported as `best.pt`)
+- **Training Process**: The model was fine-tuned on a large dataset of plant leaves—specifically trained to recognize 37 distinct plant disease classes across various species (e.g., Apple Scab, Corn Blight, Tomato Late Blight).
+- **Implementation**: Real-time image classification processes uploaded leaf photos, mapping the identified disease to a curated database of actionable treatment advice.
+
 ## 📸 Screenshots
 
 ### Farmer Advisory & Crop Recommendation
